@@ -1,0 +1,153 @@
+<?php
+
+ob_start();
+
+session_start();
+
+
+if (!isset($page_title)) {
+	$page_title = 'NESCOL - Book Store';
+
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Nav</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ <style>
+ body {
+	 margin:0;
+	 padding:0;
+ }
+ 	.pop-nav {
+	 height:100%;
+	 width:30%;
+	 background:url(img/navigation-new.png) no-repeat center;
+	 background-size:100% 100%;
+	 overflow:visible;
+	}
+	.slide {
+    position:absolute;
+
+    left:-200px;
+    cursor:pointer;
+}
+#wrapper{
+	background-color:#999;
+}
+
+.nav-pos {
+	width:20%;
+	display:block;
+}
+.nav-pos ul {
+    list-style-type: disc;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+.button-spin {	
+	position:absolute;
+	top:50%;
+	right:-160px;
+}
+.nav-pos ul li{
+	clear:both;
+}
+.nav-pos ul li:first-child {
+	padding-top:90%;	
+}
+.nav-pos ul li {
+	height:25vh;
+	margin-left:150%;
+	list-style-type:none;
+}
+.nav-pos ul li:last-child{
+	height:0vh;
+
+}
+.nav-pos ul li a {
+	font-size:1.7em;
+	color:#FFF;
+	font-weight:bold;
+	text-decoration:none;
+}
+.nav-pos ul li a:hover {
+	color:#999;
+
+}
+.rotate {
+-webkit-transform: rotate(180deg);
+-moz-transform: rotate(180deg);
+-o-transform: rotate(180deg);
+-ms-transform: rotate(180deg);
+transform: rotate(180deg);
+transition-duration:1s;
+}
+.rotateb {
+-webkit-transform: rotate(-0deg);
+-moz-transform: rotate(-0deg);
+-o-transform: rotate(-0deg);
+-ms-transform: rotate(-0deg);
+transform: rotate(-0deg);
+transition-duration:1s;
+}
+
+</style>
+ 
+</head>
+
+<body>
+<script type="text/javascript">
+	$(document).ready(function(){
+    var r=0, dir=true;
+	var circ=$('.button-spin').height()/2; 
+
+
+	
+	$(".button-spin").css({ 'top': 'calc(50% - ' + circ+ 'px)' });
+    $(".button-spin").click(function() {
+        dir = !dir;
+        r = dir? -200 : 0;
+        $(".slide").stop().animate({left: r+'px'}, 800);
+		$('.button-spin > img').toggle2classes('rotate', 'rotateb');
+
+	
+    });
+	$.fn.toggle2classes = function(class1, class2){
+		if( !class1 || !class2 )
+	return this;
+	
+	return this.each(function(){
+		var $elm = $(this);
+	
+		if( $elm.hasClass(class1) || $elm.hasClass(class2) )
+			$elm.toggleClass(class1 +' '+ class2);
+	
+		else
+			$elm.addClass(class1);
+	});
+};
+});
+</script>
+
+	<div id="wrapper">
+
+            <div class="slide pop-nav">
+                <div class="nav-pos">
+                <div class="button-spin"><img src="img/navigation-spin2.svg" width="50%"/></div>
+                    <ul>
+                        <li><a class="no-bg" href="#">Home</a></li>
+                        <li><a class="no-bg" href="#">Blog</a></li>
+                        <li><a class="no-bg" href="#">About</a></li>
+                        <li><a class="no-bg" href="#">Posts</a></li>
+                    </ul>
+                </div>
+                </div>
+    		</div>
+            
+    

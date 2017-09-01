@@ -1,0 +1,37 @@
+
+	</div>
+
+	<div id="Menu">
+		<a href="index.php" title="Home Page">Home</a><br />
+		<?php # Script 18.2 - footer.html
+	
+		if (isset($_SESSION['user_id'])) {
+
+		echo '<a href="logout.php" title="Logout">Logout</a><br />
+		<a href="change_password.php" title="Change Your Password">Change Password</a><br />
+		';
+
+		
+		if ($_SESSION['user_level'] == 1) {
+			echo '<a href="view_users.php" title="View All Users">View Users</a><br />
+		';
+		}
+	
+		} else { 
+		echo '<a href="register.php" title="Register for the Site">Register</a><br />
+		<a href="login.php" title="Login">Login</a><br />
+		<a href="forgot_password.php" title="Password Retrieval">Forgot Your Password?</a><br />
+		';
+		}
+		?>
+		<a href="#">Car Page</a><br />
+		<a href="#">Contact Us</a><br /><!--Insert Contact form into root folder-->
+	</div>
+
+</body>
+
+</html>
+
+<?php 
+ob_end_flush();
+?>
